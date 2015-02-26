@@ -1,37 +1,13 @@
-<style>
-.zh {
-    display:block;
-    border: 1px solid lightblue;
-    padding:25px;
-    margin-top:30px;
-}
-
-.en {
-    display: none;
-    border: 1px solid lightgreen;
-    padding:5px;
-    margin-top:30px;
-}
-</style>
-
 # Frontend Guidelines
 
 ## HTML
 
-
-
-<div class='zh'>
-### 语义化
-</div>
-
-<div class='zh'>
-### Semantics
-</div>
+### Semantics 语义化
 
 HTML5 provides us with lots of semantic elements aimed to describe precisely the content. Make sure you benefit from its rich vocabulary.
 
 ```html
-<!-- bad -->
+<!-- 坏的方式 -->
 <div id="main">
   <div class="article">
     <div class="header">
@@ -42,7 +18,7 @@ HTML5 provides us with lots of semantic elements aimed to describe precisely the
   </div>
 </div>
 
-<!-- good -->
+<!-- 好的方式 -->
 <main>
   <article>
     <header>
@@ -58,25 +34,25 @@ Make sure you understand the semantic of the elements you're using. It's worse t
 element in a wrong way than staying neutral.
 
 ```html
-<!-- bad -->
+<!-- 坏的方式 -->
 <h1>
   <figure>
     <img alt=Company src=logo.png>
   </figure>
 </h1>
 
-<!-- good -->
+<!-- 好的方式 -->
 <h1>
   <img alt=Company src=logo.png>
 </h1>
 ```
 
-### Brevity
+### Brevity 精短
 
 Keep your code terse. Forget about your old XHTML habits.
 
 ```html
-<!-- bad -->
+<!-- 坏的方式 -->
 <!doctype html>
 <html lang=en>
   <head>
@@ -94,7 +70,7 @@ Keep your code terse. Forget about your old XHTML habits.
   </body>
 </html>
 
-<!-- good -->
+<!-- 好的方式 -->
 <!doctype html>
 <html lang=en>
   <meta charset=utf-8>
@@ -110,7 +86,7 @@ Keep your code terse. Forget about your old XHTML habits.
 </html>
 ```
 
-### Accessibility
+### Accessibility 明了
 
 Accessibility shouldn't be an afterthought. You don't have to be a WCAG expert to improve your
 website, you can start immediately by fixing the little things that make a huge difference, such as:
@@ -121,25 +97,25 @@ website, you can start immediately by fixing the little things that make a huge 
 * explicitly labelling form controls
 
 ```html
-<!-- bad -->
+<!-- 坏的方式 -->
 <h1><img alt="Logo" src="logo.png"></h1>
 
-<!-- good -->
+<!-- 好的方式 -->
 <h1><img alt="My Company, Inc." src="logo.png"></h1>
 ```
 
-### Language
+### Language 指定语言
 
 While defining the language and character encoding is optional, it's recommended to always declare
 both at document level, even if they're specified in your HTTP headers. Favor UTF-8 over any other
 character encoding.
 
 ```html
-<!-- bad -->
+<!-- 坏的方式 -->
 <!doctype html>
 <title>Hello, world.</title>
 
-<!-- good -->
+<!-- 好的方式 -->
 <!doctype html>
 <html lang=en>
   <meta charset=utf-8>
@@ -147,7 +123,7 @@ character encoding.
 </html>
 ```
 
-### Performance
+### Performance 性能
 
 Unless there's a valid reason for loading your scripts before your content, don't block the
 rendering of your page. If your style sheet is heavy, isolate the styles that are absolutely
@@ -156,14 +132,14 @@ Two HTTP requests is significantly slower than one, but the perception of speed 
 important factor.
 
 ```html
-<!-- bad -->
+<!-- 坏的方式 -->
 <!doctype html>
 <meta charset=utf-8>
 <script src=analytics.js></script>
 <title>Hello, world.</title>
 <p>...</p>
 
-<!-- good-->
+<!-- 好的方式-->
 <!doctype html>
 <meta charset=utf-8>
 <title>Hello, world.</title>
@@ -173,55 +149,55 @@ important factor.
 
 ## CSS
 
-### Semicolons
+### Semicolons 请带上分号
 
 While the semicolon is technically a separator in CSS, always treat it as a terminator.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div {
   color: red
 }
 
-/* good */
+/* 好的方式 */
 div {
   color: red;
 }
 ```
 
-### Box model
+### Box model 盒子模型
 
 The box model should ideally be the same for the entire document. A global
 `* { box-sizing: border-box; }` is fine, but don't change the default box model
 on specific elements if you can avoid it.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div {
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
 }
 
-/* good */
+/* 好的方式 */
 div {
   padding: 10px;
 }
 ```
 
-### Flow
+### Flow 流
 
 Don't change the default behavior of an element if you can avoid it. Keep elements in the
 natural document flow as much as you can. For example, removing the white-space below an
 image shouldn't make you change its default display:
 
 ```css
-/* bad */
+/* 坏的方式 */
 img {
   display: block;
 }
 
-/* good */
+/* 好的方式 */
 img {
   vertical-align: middle;
 }
@@ -230,21 +206,21 @@ img {
 Similarly, don't take an element off the flow if you can avoid it.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div {
   width: 100px;
   position: absolute;
   right: 0;
 }
 
-/* good */
+/* 好的方式 */
 div {
   width: 100px;
   margin-left: auto;
 }
 ```
 
-### Positioning
+### Positioning 定位
 
 There are many ways to position elements in CSS but try to restrict yourself to the
 properties/values below. By order of preference:
@@ -258,29 +234,29 @@ position: absolute;
 position: fixed;
 ```
 
-### Selectors
+### Selectors 选择器
 
 Minimize selectors tightly coupled to the DOM. Consider adding a class to the elements
 you want to match when your selector exceeds 3 structural pseudo-classes, descendant or
 sibling combinators.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div:first-of-type :last-chid > p ~ *
 
-/* good */
+/* 好的方式 */
 div:first-of-type .info
 ```
 
 Avoid overloading your selectors when you don't need to.
 
 ```css
-/* bad */
+/* 坏的方式 */
 img[src$=svg], ul > li:first-child {
   opacity: 0;
 }
 
-/* good */
+/* 好的方式 */
 [src$=svg], ul > :first-child {
   opacity: 0;
 }
@@ -292,7 +268,7 @@ Don't make values and selectors hard to override. Minimize the use of `id`'s
 and avoid `!important`.
 
 ```css
-/* bad */
+/* 坏的方式 */
 .bar {
   color: green !important;
 }
@@ -300,7 +276,7 @@ and avoid `!important`.
   color: red;
 }
 
-/* good */
+/* 好的方式 */
 .foo.bar {
   color: green;
 }
@@ -309,12 +285,12 @@ and avoid `!important`.
 }
 ```
 
-### Overriding
+### Overriding 重写
 
 Overriding styles makes selectors and debugging harder. Avoid it when possible.
 
 ```css
-/* bad */
+/* 坏的方式 */
 li {
   visibility: hidden;
 }
@@ -322,35 +298,35 @@ li:first-child {
   visibility: visible;
 }
 
-/* good */
+/* 好的方式 */
 li + li {
   visibility: hidden;
 }
 ```
 
-### Inheritance
+### Inheritance 继承
 
 Don't duplicate style declarations that can be inherited.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div h1, div p {
   text-shadow: 0 1px 0 #fff;
 }
 
-/* good */
+/* 好的方式 */
 div {
   text-shadow: 0 1px 0 #fff;
 }
 ```
 
-### Brevity
+### Brevity 精短
 
 Keep your code terse. Use shorthand properties and avoid using multiple properties when
 it's not needed.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div {
   transition: all 1s;
   top: 50%;
@@ -361,7 +337,7 @@ div {
   padding-left: 10px;
 }
 
-/* good */
+/* 好的方式 */
 div {
   transition: 1s;
   top: calc(50% - 10px);
@@ -369,29 +345,29 @@ div {
 }
 ```
 
-### Language
+### Language 语言
 
 Prefer English over math.
 
 ```css
-/* bad */
+/* 坏的方式 */
 :nth-child(2n + 1) {
   transform: rotate(360deg);
 }
 
-/* good */
+/* 好的方式 */
 :nth-child(odd) {
   transform: rotate(1turn);
 }
 ```
 
-### Vendor prefixes
+### Vendor prefixes  特定前缀（宿主也可以）
 
 Kill obsolete vendor prefixes aggressively. If you need to use them, insert them before the
 standard property.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div {
   transform: scale(2);
   -webkit-transform: scale(2);
@@ -403,7 +379,7 @@ div {
   -ms-transition: 1s;
 }
 
-/* good */
+/* 好的方式 */
 div {
   -webkit-transform: scale(2);
   transform: scale(2);
@@ -411,13 +387,13 @@ div {
 }
 ```
 
-### Animations
+### Animations 动画
 
 Favor transitions over animations. Avoid animating other properties than
 `opacity` and `transform`.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div:hover {
   animation: move 1s forwards;
 }
@@ -427,20 +403,20 @@ div:hover {
   }
 }
 
-/* good */
+/* 好的方式 */
 div:hover {
   transition: 1s;
   transform: translateX(100px);
 }
 ```
 
-### Units
+### Units 单位
 
 Use unitless values when you can. Favor `rem` if you use relative units. Prefer seconds over
 milliseconds.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div {
   margin: 0px;
   font-size: .9em;
@@ -448,7 +424,7 @@ div {
   transition: 500ms;
 }
 
-/* good */
+/* 好的方式 */
 div {
   margin: 0;
   font-size: .9rem;
@@ -457,33 +433,33 @@ div {
 }
 ```
 
-### Colors
+### Colors 颜色
 
 If you need transparency, use `rgba`. Otherwise, always use the hexadecimal format.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div {
   color: hsl(103, 54%, 43%);
 }
 
-/* good */
+/* 好的方式 */
 div {
   color: #5a3;
 }
 ```
 
-### Drawing
+### Drawing 绘图
 
 Avoid HTTP requests when the resources are easily replicable with CSS.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div::before {
   content: url(white-circle.svg);
 }
 
-/* good */
+/* 好的方式 */
 div::before {
   content: "";
   display: block;
@@ -494,18 +470,18 @@ div::before {
 }
 ```
 
-### Hacks
+### Hacks 少用骇客
 
 Don't use them.
 
 ```css
-/* bad */
+/* 坏的方式 */
 div {
   // position: relative;
   transform: translateZ(0);
 }
 
-/* good */
+/* 好的方式 */
 div {
   /* position: relative; */
   will-change: transform;
@@ -514,14 +490,14 @@ div {
 
 ## JavaScript
 
-### Performance
+### Performance 性能
 
 Favor readability, correctness and expressiveness over performance. JavaScript will basically never
 be your performance bottleneck. Optimize things like image compression, network access and DOM
 reflows instead. If you remember just one guideline from this document, choose this one.
 
 ```javascript
-// bad (albeit way faster)
+// 坏的方式 (albeit way faster)
 const arr = [1, 2, 3, 4];
 const len = arr.length;
 var i = -1;
@@ -532,7 +508,7 @@ while (++i < len) {
   result.push(n * n);
 }
 
-// good
+// 好的方式
 const arr = [1, 2, 3, 4];
 const isEven = n => n % 2 == 0;
 const square = n => n * n;
@@ -540,29 +516,29 @@ const square = n => n * n;
 const result = arr.filter(isEven).map(square);
 ```
 
-### Statelessness
+### Statelessness 状态无关
 
 Try to keep your functions pure. All functions should ideally produce no side-effects, use no outside data and return new objects instead of mutating existing ones.
 
 ```javascript
-// bad
+// 坏的方式
 const merge = (target, ...sources) => Object.assign(target, ...sources);
 merge({ foo: "foo" }, { bar: "bar" }); // => { foo: "foo", bar: "bar" }
 
-// good
+// 好的方式
 const merge = (...sources) => Object.assign({}, ...sources);
 merge({ foo: "foo" }, { bar: "bar" }); // => { foo: "foo", bar: "bar" }
 ```
 
-### Natives
+### Natives 少动，尽量保持原样
 
 Rely on native methods as much as possible.
 
 ```javascript
-// bad
+// 坏的方式
 const toArray = obj => [].slice.call(obj);
 
-// good
+// 好的方式
 const toArray = (() =>
   Array.from ? Array.from : obj => [].slice.call(obj)
 )();
@@ -573,19 +549,19 @@ const toArray = (() =>
 Embrace implicit coercion when it makes sense. Avoid it otherwise. Don't cargo-cult.
 
 ```javascript
-// bad
+// 坏的方式
 if (x === undefined || x === null) { ... }
 
-// good
+// 好的方式
 if (x == undefined) { ... }
 ```
 
-### Loops
+### Loops 循环
 
 Don't use loops as they force you to use mutable objects. Rely on `array.prototype` methods.
 
 ```javascript
-// bad
+// 坏的方式
 const sum = arr => {
   var sum = 0;
   var i = -1;
@@ -597,7 +573,7 @@ const sum = arr => {
 
 sum([1, 2, 3]); // => 6
 
-// good
+// 好的方式
 const sum = arr =>
   arr.reduce((x, y) => x + y);
 
@@ -606,7 +582,7 @@ sum([1, 2, 3]); // => 6
 If you can't, or if using `array.prototype` methods is arguably abusive, use recursion.
 
 ```javascript
-// bad
+// 坏的方式
 const createDivs = howMany => {
   while (howMany--) {
     document.body.insertAdjacentHTML("beforeend", "<div></div>");
@@ -614,14 +590,14 @@ const createDivs = howMany => {
 };
 createDivs(5);
 
-// bad
+// 坏的方式
 const createDivs = howMany =>
   [...Array(howMany)].forEach(() =>
     document.body.insertAdjacentHTML("beforeend", "<div></div>")
   );
 createDivs(5);
 
-// good
+// 好的方式
 const createDivs = howMany => {
   if (!howMany) return;
   document.body.insertAdjacentHTML("beforeend", "<div></div>");
@@ -630,7 +606,7 @@ const createDivs = howMany => {
 createDivs(5);
 ```
 
-### Arguments
+### Arguments 参数
 
 Forget about the `arguments` object. The rest parameter is always a better option because:
 
@@ -638,15 +614,15 @@ Forget about the `arguments` object. The rest parameter is always a better optio
 2. it's a real array, which makes it easier to use.
 
 ```javascript
-// bad
+// 坏的方式
 const sortNumbers = () =>
   Array.prototype.slice.call(arguments).sort();
 
-// good
+// 好的方式
 const sortNumbers = (...numbers) => numbers.sort();
 ```
 
-### Apply
+### Apply 
 
 Forget about `apply()`. Use the spread operator instead.
 
@@ -654,10 +630,10 @@ Forget about `apply()`. Use the spread operator instead.
 const greet = (first, last) => `Hi ${first} ${last}`;
 const person = ["John", "Doe"];
 
-// bad
+// 坏的方式
 greet.apply(null, person);
 
-// good
+// 好的方式
 greet(...person);
 ```
 
@@ -666,14 +642,14 @@ greet(...person);
 Don't `bind()` when there's a more idiomatic approach.
 
 ```javascript
-// bad
+// 坏的方式
 ["foo", "bar"].forEach(func.bind(this));
 
-// good
+// 好的方式
 ["foo", "bar"].forEach(func, this);
 ```
 ```javascript
-// bad
+// 坏的方式
 const person = {
   first: "John",
   last: "Doe",
@@ -685,7 +661,7 @@ const person = {
   }
 }
 
-// good
+// 好的方式
 const person = {
   first: "John",
   last: "Doe",
@@ -696,31 +672,31 @@ const person = {
 }
 ```
 
-### Higher-order functions
+### Higher-order functions 高阶函数
 
 Avoid nesting functions when you don't have to.
 
 ```javascript
-// bad
+// 坏的方式
 [1, 2, 3].map(num => String(num));
 
-// good
+// 好的方式
 [1, 2, 3].map(String);
 ```
 
-### Composition
+### Composition 
 
 Avoid multiple nested function calls. Use composition instead.
 
 ```javascript
-// bad
+// 坏的方式
 const plus1 = a => a + 1;
 const mult2 = a => a * 2;
 
 mult2(plus1(5)); // => 12
 
 
-// good
+// 好的方式
 const pipeline = (...funcs) =>
   val => funcs.reduce((a, b) => b(a), val);
 
@@ -731,19 +707,19 @@ const addThenMult = pipeline(plus1, mult2);
 addThenMult(5); // => 12
 ```
 
-### Caching
+### Caching 缓存
 
 Cache feature tests, large data structures and any expensive operation.
 
 ```javascript
-// bad
+// 坏的方式
 const contains = (arr, value) =>
   Array.prototype.includes
     ? arr.includes(value)
     : arr.some(el => el === value);
 contains(["foo", "bar"], "baz"); // => false
 
-// good
+// 好的方式
 const contains = (() =>
   Array.prototype.includes
     ? (arr, value) => arr.includes(value)
@@ -752,46 +728,46 @@ const contains = (() =>
 contains(["foo", "bar"], "baz"); // => false
 ```
 
-### Variables
+### Variables 变量
 
 Favor `const` over `let` and `let` over `var`.
 
 ```javascript
-// bad
+// 坏的方式
 var obj = {};
 obj["foo" + "bar"] = "baz";
 
-// good
+// 好的方式
 const obj = {
   ["foo" + "bar"]: "baz"
 };
 ```
 
-### Conditions
+### Conditions 条件
 
 Favor IIFE's and return statements over if, else if, else and switch statements.
 
 ```javascript
-// bad
+// 坏的方式
 var grade;
 if (result < 50)
-  grade = "bad";
+  grade = "坏的方式";
 else if (result < 90)
-  grade = "good";
+  grade = "好的方式";
 else
   grade = "excellent";
 
-// good
+// 好的方式
 const grade = (() => {
   if (result < 50)
-    return "bad";
+    return "坏的方式";
   if (result < 90)
-    return "good";
+    return "好的方式";
   return "excellent";
 })();
 ```
 
-### Object iteration
+### Object iteration 对象遍历
 
 Avoid `for...in` when you can.
 
@@ -804,13 +780,13 @@ const obj = Object.create(shared, {
   }
 });
 
-// bad
+// 坏的方式
 for (var prop in obj) {
   if (obj.hasOwnProperty(prop))
     console.log(prop);
 }
 
-// good
+// 好的方式
 Object.keys(obj).forEach(prop => console.log(prop));
 ```
 
@@ -820,7 +796,7 @@ While objects have legitimate use cases, maps are usually a better, more powerfu
 doubt, use a `Map`.
 
 ```javascript
-// bad
+// 坏的方式
 const me = {
   name: "Ben",
   age: 30
@@ -831,7 +807,7 @@ me.country = "Belgium";
 meSize++;
 meSize; // => 3
 
-// good
+// 好的方式
 const me = Map();
 me.set("name", "Ben");
 me.set("age", 30);
@@ -845,11 +821,11 @@ me.size; // => 3
 Currying might have its place in other languages, but avoid it in JavaScript. It makes your code harder to read by introducing a foreign paradigm while the appropriate use cases are extremely unusual.
 
 ```javascript
-// bad
+// 坏的方式
 const sum = a => b => a + b;
 sum(5)(3); // => 8
 
-// good
+// 好的方式
 const sum = (a, b) => a + b;
 sum(5, 3); // => 8
 ```
@@ -859,24 +835,24 @@ sum(5, 3); // => 8
 Don't obfuscate the intent of your code by using seemingly smart tricks.
 
 ```javascript
-// bad
+// 坏的方式
 foo || doSomething();
 
-// good
+// 好的方式
 if (!foo) doSomething();
 ```
 ```javascript
-// bad
+// 坏的方式
 void function() { /* IIFE */ }();
 
-// good
+// 好的方式
 (function() { /* IIFE */ }());
 ```
 ```javascript
-// bad
+// 坏的方式
 const n = ~~3.14;
 
-// good
+// 好的方式
 const n = Math.floor(3.14);
 ```
 
@@ -885,20 +861,20 @@ const n = Math.floor(3.14);
 Don't be afraid of creating lots of small, highly composable and reusable functions.
 
 ```javascript
-// bad
+// 坏的方式
 arr[arr.length - 1];
 
-// good
+// 好的方式
 const first = arr => arr[0];
 const last = arr => first(arr.slice(-1));
 last(arr);
 ```
 ```javascript
-// bad
+// 坏的方式
 const product = (a, b) => a * b;
 const triple = n => n * 3;
 
-// good
+// 好的方式
 const product = (a, b) => a * b;
 const triple = product.bind(null, 3);
 ```
@@ -908,13 +884,13 @@ const triple = product.bind(null, 3);
 Minimize dependencies. Third-party is code you don't know. Don't load an entire library for just a couple of methods easily replicable:
 
 ```javascript
-// bad
+// 坏的方式
 var _ = require("underscore");
 _.compact(["foo", 0]));
 _.unique(["foo", "foo"]);
 _.union(["foo"], ["bar"], ["foo"]);
 
-// good
+// 好的方式
 const compact = arr => arr.filter(el => el);
 const unique = arr => [...Set(arr)];
 const union = (...arr) => unique([].concat(...arr));
