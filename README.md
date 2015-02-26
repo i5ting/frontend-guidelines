@@ -1,8 +1,32 @@
+<style>
+.zh {
+    display:block;
+    border: 1px solid lightblue;
+    padding:25px;
+    margin-top:30px;
+}
+
+.en {
+    display: none;
+    border: 1px solid lightgreen;
+    padding:5px;
+    margin-top:30px;
+}
+</style>
+
 # Frontend Guidelines
 
 ## HTML
 
+
+
+<div class='zh'>
+### 语义化
+</div>
+
+<div class='zh'>
 ### Semantics
+</div>
 
 HTML5 provides us with lots of semantic elements aimed to describe precisely the content. Make sure you benefit from its rich vocabulary.
 
